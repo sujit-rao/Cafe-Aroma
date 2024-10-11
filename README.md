@@ -17,7 +17,7 @@ Payment Integration: Seamless payment processing through Razorpay.
 Responsive Design: Optimized for mobile and desktop viewing, ensuring a smooth user experience.
 Technologies Used
 Backend: Django
-Frontend: HTML, CSS 
+Frontend: HTML, CSS , JavaScript
 Database: SQLite
 Payment Gateway: Razorpay
 Others: Git, GitHub
