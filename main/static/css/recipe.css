@@ -1,0 +1,536 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
+:root {
+    --main-color: #d3ad7f;
+    --black: #13131a;
+    --bg: #F5F5DC;
+    --navbg: #4B2E2A;
+    --text-color: #fff;
+    --border: .1rem solid rgba(255, 255, 255, .3);
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+
+    transition: 0.25s linear;
+}
+
+html {
+    font-size: 62%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5rem;
+}
+
+body {
+    background: var(--bg);
+
+}
+
+/* toast */
+
+
+#toast-success {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+    padding: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+#toast-success.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#toast-failed {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+    padding: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+#toast-failed.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Toast end */
+
+/* Header start */
+
+.header {
+    background: var(--navbg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.header.logo {
+    height: 6rem;
+    width: 6rem;
+}
+
+.logo1 {
+    font-size: 30px;
+    color: var(--main-color);
+    -webkit-text-stroke-color: #ffffff;
+    -webkit-text-stroke-width: 1px;
+}
+
+.logo2 {
+    font-size: 15px;
+    color: var(--main-color);
+    -webkit-text-stroke-color: #ffffff;
+    -webkit-text-stroke-width: 0.5px;
+}
+
+.header .navbar a {
+    margin: 0 1rem;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.header .navbar a:hover {
+    color: var(--main-color);
+    border-bottom: #d3ad7f 1px solid;
+}
+
+.header .icons i {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+.header .icons i:hover {
+    color: var(--main-color);
+}
+
+#menu-btn {
+    display: none;
+}
+
+.header .search-form {
+    position: absolute;
+    top: 110%;
+    right: 3.5%;
+    background: #fff;
+    min-width: 25rem;
+    width: 40rem;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    z-index: -1;
+
+}
+
+.header .search-form.active {
+    transform: scaleY(1);
+}
+
+.header .search-form input {
+    height: 100%;
+    width: 100%;
+    font-size: 1.5rem;
+    color: var(--black);
+    padding: 1rem;
+    text-transform: none;
+}
+
+.header .search-form label {
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin-right: 1.5rem;
+    color: var(--black);
+}
+
+
+/* End of header */
+
+
+/* Menu Section */
+
+.menu {
+    margin-top: 10rem;
+}
+
+.menu .heading {
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--navbg);
+
+}
+
+
+.box-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-gap: 2rem;
+    background: #fee4c5;
+    padding: 2.5rem;
+    border-radius: 10px;
+    place-items: center;
+
+}
+
+.recipe-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+}
+
+.recipe-card:hover {
+    transform: scale(1.1);
+
+}
+
+.recipe-card-content {
+    padding: 16px;
+}
+
+.recipe-card h3 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+}
+
+.recipe-card p {
+    margin: 0 0 16px;
+    color: #555;
+    font-size: 1.3rem;
+    line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.recipe-card .price {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.recipe-card .order-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4B2E2A;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+/* Counter Styles */
+.counter {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.counter-btn {
+    padding: 8px;
+    font-size: 1.2em;
+    background-color:#f0cb9f;
+    color: black;
+    border: none;
+    border-radius: 30%;
+    cursor: pointer;
+}
+
+.counter-btn:hover {
+    background-color: #3a211f;
+}
+
+#display-counter {
+    margin-left: 6px;
+    margin-right: 6px;
+    /* margin: 0 12px; */
+    font-size: 1.5em;
+}
+
+
+/* End of recipe */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer Section */
+.footer {
+    background: var(--black);
+    text-align: center;
+    padding: 20px;
+
+}
+
+.footer .share {
+    padding: 1rem 0;
+
+}
+
+.footer .share a {
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    color: #fff;
+    border: var(--border);
+    margin: .3rem;
+    border-radius: 50%;
+
+}
+
+.footer .share a:hover {
+    background-color: var(--main-color);
+}
+
+.footer .links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    gap: 1rem;
+}
+
+.footer .links a {
+
+    color: #fff;
+
+    font-size: 2rem;
+}
+
+.footer .links a:hover {
+    color: var(--main-color);
+
+}
+
+.footer .credit {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: lighter;
+    padding: 1.5rem;
+}
+
+.footer .credit span {
+    color: var(--main-color);
+}
+
+/* End of footer section */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:990px) {
+    html {
+        font-size: 55%;
+    }
+
+    section {
+        padding: 1rem;
+
+
+    }
+
+    .header {
+        padding: 1.5rem 2rem;
+    }
+}
+
+
+@media (max-width: 769px) {
+
+
+
+    /* header */
+
+    #menu-btn {
+        display: inline-block;
+    }
+
+    .header {
+        right: 0;
+        background: #fff;
+        background: 30rem;
+        background-color: var(--navbg);
+        border-bottom: #fff;
+
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background: #fff;
+        width: 30rem;
+        height: calc(100vh);
+        transition-duration: 0.4s;
+    }
+
+    .header .navbar.active {
+        right: 0;
+        transition: all;
+        transition-duration: 0.5s;
+    }
+
+    .header .navbar a {
+        color: var(--black);
+        display: block;
+        margin: 1.5rem;
+        padding: 1.5rem;
+        font-size: 2rem;
+    }
+
+    .header .search-form {
+        width: 90%;
+        right: 2%;
+    }
+
+    /* end of header */
+
+
+
+
+
+
+    /* footer */
+    .footer {
+        margin-top: auto;
+        bottom: 100%;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    section {
+        padding-left: 0.5rem;
+        padding-right: 2    rem;
+        margin-left: 0.7rem;
+
+
+    }
+    .recipe-card:hover {
+        transform: none;
+
+    }
+    html {
+        font-size: 50%;
+    }
+}

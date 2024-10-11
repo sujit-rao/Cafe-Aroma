@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/logo.png' %}" />
+    <title>Café Aroma</title>
+
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+</head>
+
+<body>
+    <div id="back-button">
+        <button class="fail" id="back-button" ><a href= "{%url 'cart'%}"> Back</a></button>
+    </div>
+    <div class="complete-pay">
+        <h1>Complete Payment</h1>
+        <div class="button-grp">
+            <!-- <button class="initiate" id="pay-button">Pay</button> -->
+            
+        </div>
+        <form action="{% url 'verify_payment' %}" method="POST" id="payment-form">
+            {% csrf_token %}
+            <input type="hidden" name="razorpay_order_id" value="{{ order_id }}">
+            <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+            <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+            <script src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key="{{ key_id }}"
+                    data-amount="{{ amount }}"
+                    data-currency="{{ currency }}"
+                    data-order_id="{{ order_id }}"
+                    data-buttontext="Pay"
+                    data-name="Café Aroma"
+                    data-description="Order Payment"
+                    data-image="{% static 'images/logo.png' %}"
+                    data-prefill.name="{{ customer.full_name }}"
+                    data-prefill.email="{{ customer.email }}">
+            </script>
+            <script>
+                var options = {
+                    "handler": function (response) {
+                        document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+                        document.getElementById('razorpay_signature').value = response.razorpay_signature;
+                        document.getElementById('payment-form').submit();
+                    }
+                };
+                var rzp = new Razorpay(options);
+    
+        </script>
+    </form>
+   </div>
+</body>
+
+</html>

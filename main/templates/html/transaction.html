@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/logo.png' %}" />
+    <title>Café Aroma</title>
+
+    <!-- Font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="{% static 'css/transaction.css' %}">
+
+</head>
+
+<body>
+
+
+
+    <!-- Transaction page -->
+    <div class="cart-title">Your Transactions</div>
+    <div class="open-border">
+        <div>
+
+            <div class="cart-card-header">
+                <div class="cart-card-content-header">
+                    <h3>Payment ID</h3>
+                    <h3>Date</h3>
+                    <h3>Total Price</h3>
+                    <h3>Payment Status</h3>
+                    <h3>Delivery Status</h3>
+                </div>
+            </div>
+        {% if orders %}
+            <!-- Cart items -->
+            <div class="cart-items">
+            {% for order in orders %}
+                <div class="cart-card">
+                    <!-- <p class="payment-detail" onclick="toggleExpand(this)">1234566asdffg373783783748347838877</p> -->
+               
+                    <p> {{ order.razorpay_payment_id  }}</p>
+                    <p> {{ order.order_date  }} </p>
+                    <p> {{ order.total_price }} <span>₹</span></p>
+                    <p> {{ order.status }} </p>
+                    <p> {{ order.delivery_status }} </p>
+            </div>
+            {% endfor %}           
+        </div>
+        {% endif %} 
+
+            <!-- Cart items End -->
+           
+            <div class="back-btn_section">
+                <a class="backToHome" href="{% url 'index' %}">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+
+
+        <div class="links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'devpage' %}">Developers</a>
+            <a href="{% url 'recipe' %}">Recipes</a>
+            <a href="{% url 'contact' %}">Contact</a>
+          </div>
+
+        <div class="credit">
+            Created by <span>Cafe Aroma</span> | All Rights Reserved
+        </div>
+    </div>
+    <!-- End of footer -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

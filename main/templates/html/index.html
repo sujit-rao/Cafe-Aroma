@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/logo.png' %}" />
+    <title>Café Aroma</title>
+
+    <!-- Font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+    <header class="header">
+
+        <!-- logo -->
+        <a href="{% url 'index' %}" class="logo">
+            <h2><span class="logo1">Café</span> <span class="logo2">Aroma</span></h2>
+        </a>
+
+        <!-- navbar -->
+        <nav class="navbar">
+            <a href="{% url 'index' %}">Home</a>
+            <!-- <a href="about">About</a> -->
+            <a href="{% url 'recipe' %}">Recipes</a>
+            <a href="{% url 'contact' %}">Contact</a>
+
+        </nav>
+
+        <div class=" icons">
+            
+        {% if request.session.user_id %}
+            <a  href="{% url 'profile' %}"><i class="fa-solid fa-user" style="color: #74C0FC;"></i></a>
+        {% else %}
+            <a href="{% url 'login' %}"><i class="fa-solid fa-user"></i></a>
+        {% endif %}
+            <a href="{%url 'cart'%}"><i class="fa-solid fa-cart-shopping" id="cart-btn"></i></a>
+
+            <i class="fas fa-bars" id="menu-btn"></i>
+
+        </div>
+
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here">
+            <label for="search-box" class="fas fa-magnifying-glass"></label>
+
+        </div>
+
+    </header>
+
+    <!-- Ed of header -->
+
+    <!-- Home section -->
+
+    <section class="home" id="home">
+        <div class="content">
+            <h3>Fresh Coffee in the morning</h3>
+            <p style=" font-size: 1.3rem;
+    color: #eee;
+    font-weight: 50;
+    line-height: 1.7;
+    padding: 1rem 0;">Discover the perfect cup at Café Aroma in Evergreen Heights. Relax, work, or connect in our cozy,
+                inviting atmosphere. Savor our artisanal coffee and join our community.</p>
+            <a href="{% url 'recipe' %}" class="btn">Order Now</a>
+
+        </div>
+    </section>
+
+    <!-- End of home section -->
+
+    <!-- About section -->
+
+    <section class="about" id="about">
+        <h1 class="heading">
+            <span>About</span> Us
+        </h1>
+
+
+        <div class="row">
+            <img src="{% static 'images/about.jpg' %}" class="image" alt="">
+
+
+            <div class="content">
+                <h3>Who We Are</h3>
+                <p>Welcome to Café Aroma, where every cup tells a story. Nestled in the heart of Evergreen Heights, our
+                    cozy coffee shop is more than just a place to grab a cup of coffee—it's a community hub, a haven for
+                    coffee lovers, and a retreat from the hustle and bustle of everyday life.
+
+                    At Café Aroma, we believe that coffee is an art form. Our journey began with a simple love for the
+                    perfect brew, and it has grown into a passion for sharing that love with you. From the moment you
+                    step through our doors, you'll be greeted by the rich aroma of freshly ground beans and the warm
+                    smiles of our baristas, who are dedicated to crafting the perfect cup every time.</p>
+                <p>At Café Aroma, we're proud to be a part of the Evergreen Heights community. We host regular events,
+                    from live music to coffee tasting workshops, and we're always looking for ways to give back. We
+                    believe that a coffee shop should be a place where everyone feels welcome, and we strive to create a
+                    space where you can feel at home. Experience the warmth of our hospitality and the richness of our
+                    brews.</p>
+                <a href="" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- End of about section -->
+
+
+    <!-- Menu Section -->
+     <br><br>
+
+    <section class="menu" id="menu">
+        <h1 class="heading">
+            <span>Our</span> Menu
+
+        </h1>
+
+        <div class="box-container">
+
+            <div class="recipe-card">
+                <img src="{% static 'images/menu1.jpg' %}" alt="Recipe Image">
+                <div class="recipe-card-content">
+                    <h3>Espresso Intenso</h3>
+                    <p>A bold and rich espresso with deep roasted flavors and a creamy finish. Perfect for a strong pick-me-up any time of day.</p>
+                    <div class="price">₹250</div>
+                    <a href="#" class="order-button">Order Now</a>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <img src="{% static 'images/menu3.jpg' %}" alt="Recipe Image">
+                <div class="recipe-card-content">
+                    <h3>Caramel Mocha Bliss</h3>
+                    <p>A decadent blend of chocolate and caramel syrups with espresso and steamed milk, crowned with whipped cream and a caramel drizzle.</p>
+                    <div class="price">₹400</div>
+                    <a href="#" class="order-button">Order Now</a>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <img src="{% static 'images/menu2.jpg' %}" alt="Recipe Image">
+                <div class="recipe-card-content">
+                    <h3>Latte Macchiato</h3>
+                    <p>Smooth and velvety milk combined with a shot of rich espresso, topped with a light frothy layer. Ideal for a balanced coffee experience.</p>
+                    <div class="price">₹375</div>
+                    <a href="#" class="order-button">Order Now</a>
+                </div>
+            </div>
+
+            </div>
+        </div>
+        <h2 class="" style="text-align: center; margin-top: 1rem; font-size: 3rem; color:#4B2E2A">See more of our menu
+        </h2>
+        <div class="explore-btn">
+
+            <a class="" href="{% url 'recipe' %}">Discover more</a>
+        </div>
+    </section>
+
+    <!-- End of mennu section -->
+
+    <!-- Contact us  -->
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+
+            <!-- icon container -->
+            <div class="contact-icon-container">
+                <img src="{% static 'images/tweet.png' %}" alt="">
+                <img src="{% static 'images/whatsapp.png' %}" alt="">
+                <img src="{% static 'images/insta.png' %}" alt="">
+                <img src="{% static 'images/linkedin.png' %}" alt="">
+            </div>
+
+            <!-- contact form -->
+            <form method="POST">
+                {% csrf_token %}
+                <h1>Get in touch</h1>
+                <input class="name" type="text" name="name" placeholder="Name">
+                <input class="email" type="email" name="email" placeholder="Email">
+                <textarea class="text-area" name="message" cols="30" rows="10" placeholder="Message"></textarea>
+                <button class="contact-btn" id="contact-btn">Send Message</button>
+            </form>
+
+
+
+
+            <!-- map -->
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.3344248556423!2d-85.53547447811425!3d38.25194197854879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88699f3d10a32c8f%3A0xa9b6d8fb9d08eb41!2sEvergreen%20Rd%2C%20Middletown%2C%20KY%2C%20USA!5e0!3m2!1sen!2sin!4v1720327256517!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- end of contact us -->
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+
+        </div>
+
+        <div class="links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'devpage' %}">Developers</a>
+            <a href="{% url 'recipe' %}">Recipes</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+
+        <div class="credit">
+            Created by <span>Cafe Aroma</span> | All Rights Reserved
+        </div>
+
+    </div>
+    <!-- End of footer -->
+
+
+  <!-- <script src="static/js/script.js"></script> -->
+  <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+{% if error %}
+<script>
+    Swal.fire({
+        title: 'Error!',
+        text: "{{ error }}",
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+</script>
+{% endif %}
+
+{% if success %}
+    <script> 
+        Swal.fire({
+            title: 'Success!',
+            text: "{{ success|escapejs }}",  // Escape JS special characters
+            icon: 'success',
+            confirmButtonText: 'OK'
+            });
+    </script>
+{% endif %}
+</html>

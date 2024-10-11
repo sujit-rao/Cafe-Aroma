@@ -1,0 +1,267 @@
+:root {
+    --main-color: #d3ad7f;
+    --black: #13131a;
+    --bg: #F5F5DC;
+    --navbg: #4B2E2A;
+    --text-color: #fff;
+    --border: .1rem solid rgba(255, 255, 255, .3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5rem;
+} 
+body{
+    background-color: var(--bg);
+} 
+
+
+.outer {
+   
+    color: var(--black);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backNav{
+    margin-left: 2rem;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4B2E2A;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem 0;
+}
+
+.profile h1 {
+    text-align: center;
+    color: var(--navbg);
+    margin-bottom: 1.5rem;
+}
+
+.profile .part1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.profile .pfp-image img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.profile .name h2 {
+    font-size: 1.5rem;
+    color: var(--navbg);
+}
+
+.profile .icon i {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.profile .icon i:hover{
+    color: var(--navbg);
+}
+
+.profile .info {
+    margin-top: 2rem;
+}
+
+.profile .info h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--navbg);
+}
+
+.profile .edit-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile .edit-info .field h3 {
+    font-size: 1.2rem;
+    color: var(--navbg);
+    margin-bottom: 0.5rem;
+}
+
+.profile .edit-info .field input {
+    width: 80%;
+    font-size: 1rem;
+    padding: 0.5rem;
+  border: none;
+  border-radius: 10px;
+   background-color: whitesmoke;
+    color: var(--black);
+    cursor: default;
+    outline: none;
+}
+
+
+
+.profile .edit-info .buttons{
+    display: flex;
+    justify-content: end;
+    gap: 0.7rem;
+}
+
+.profile .edit-info .buttons button{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    border: 0.5px solid var(--navbg);
+    color: var(--navbg);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.profile .edit-info .buttons .logout-btn{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;    
+    border-radius: 5px;
+    border: 0.5px solid red;
+    color: black;
+    font-size: 1rem;
+    background-color: rgb(236, 73, 73);
+    font-weight: 540;
+}
+
+
+.profile .edit-info .buttons button:hover{
+    background: var(--navbg);
+    color: #fff;
+}
+
+.profile .edit-info .buttons .logout-btn:hover{
+    background: red;
+    color: #fff;
+    border-color: red;
+}
+
+/* footer start */
+
+.footer {
+    background: var(--black);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.footer .share {
+    padding: 1rem 0;
+}
+
+.footer .share a {
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    color: #fff;
+    border: var(--border);
+    margin: 0.3rem;
+    border-radius: 50%;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.footer .share a:hover {
+    background-color: var(--main-color);
+}
+
+.footer .links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.footer .links a {
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.footer .links a:hover {
+    color: var(--main-color);
+}
+
+.footer .credit {
+    font-size: 1rem;
+    color: #fff;
+    padding: 1.5rem 0;
+}
+
+.footer .credit span {
+    color: var(--main-color);
+}
+
+/* end of footer */
+
+@media (max-width: 768px) {
+    .profile {
+        padding: 1rem;
+    }
+
+    .profile .pfp-image img {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .profile .icon i {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+
+    .profile .edit-info .field input {
+        width: 90%;
+    }
+}

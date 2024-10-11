@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+    --main-color: #d3ad7f;
+    --black: #13131a;
+    --bg: #F5F5DC;
+    --navbg: #4B2E2A;
+    --text-color: #fff;
+    --border: .1rem solid rgba(56, 37, 37, 0.3);
+    --success-color: #4CAF50;
+    --fail-color: #F44336;
+    --hover-success-color: #388E3C;
+    --hover-fail-color: #D32F2F;
+    --button-font-size: 1.6rem;
+    --border-radius: 5px;
+}
+
+* {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.complete-pay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+    background: var(--bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 4rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.complete-pay h1 {
+    font-size: 3rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+}
+
+.initiate, .fail {
+    padding: 1.2rem 3rem;
+    font-size: var(--button-font-size);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-grow: 1;
+    font-weight: 600;
+}
+
+.initiate {
+    background-color: var(--success-color);
+    color: var(--text-color);
+}
+
+.fail {
+    background-color: var(--fail-color);
+    color: var(--text-color);
+}
+
+.initiate:hover {
+    background-color: var(--hover-success-color);
+}
+
+.fail:hover {
+    background-color: var(--hover-fail-color);
+}
+
+@media (max-width: 768px) {
+    .complete-pay h1 {
+        font-size: 2.4rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .initiate, .fail {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .complete-pay {
+        padding: 2rem;
+    }
+
+    .complete-pay h1 {
+        font-size: 2rem;
+    }
+
+    .initiate, .fail {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+    }
+}
+
+.button-group {
+    cursor: pointer;
+}

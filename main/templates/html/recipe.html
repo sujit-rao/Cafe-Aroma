@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/logo.png' %}" />
+    <title>Café Aroma</title>
+
+    <!-- Font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="{% static 'css/recipe.css' %}" />
+</head>
+<body>
+
+
+    <!-- header section starts -->
+    <header class="header">
+        <!-- logo -->
+        <a href="{% url 'index' %}" class="logo"><h2><span class="logo1">Café</span> <span class="logo2">Aroma</span></h2></a>
+
+        <!-- navbar -->
+        <nav class="navbar">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'recipe' %}">Recipes</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </nav>
+
+        <div class="icons">
+            {% if request.session.user_id %}
+                <a href="{% url 'profile' %}"><i class="fa-solid fa-user" style="color: #74C0FC;"></i></a>
+            {% else %}
+                <a href="{% url 'login' %}"><i class="fa-solid fa-user"></i></a>
+            {% endif %}
+            <a href="{% url 'cart' %}"><i class="fa-solid fa-cart-shopping" id="cart-btn"></i></a>
+
+            <i class="fas fa-bars" id="menu-btn"></i>
+        </div>
+
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here" />
+            <label for="search-box" class="fas fa-magnifying-glass"></label>
+        </div>
+    </header>
+
+
+
+    <!-- End of header -->
+    <section class="outer">
+        <section class="inner">
+            <div class="content">
+                <!-- Content -->
+                <div>
+                    <!-- Menu Section -->
+                    <section class="menu" id="menu">
+                        <h1 class="heading"><span>Explore the wide range of coffees that we offer</span></h1>
+
+                        <div class="box-container">
+                            <!-- card 1 -->
+                            {% for products in products %}
+                                <form action="{% url 'add_to_cart' products.id %}" method="GET" class="recipe-card">
+                                    <img src="{{ products.image.url }}" alt="{{ products.title }}" />
+                                    <div class="recipe-card-content">
+                                        <h3>{{ products.title }}</h3>
+                                        <p>{{ products.description }}</p>
+                                        <div class="price">₹{{ products.price }}</div>
+
+                                        <!-- Counter section -->
+                                        <div class="counter">
+                                            <button type="button" class="counter-btn" id="decrease-btn">-</button>
+                                            <input type="hidden" name="quantity" value="1" id="counter-value" />
+                                            <span id="display-counter">1</span>
+                                            <button type="button" class="counter-btn" id="increase-btn">+</button>
+                                        </div>
+
+                                        <button type="submit" class="order-button">Order Now</button>
+                                    </div>
+                                </form>
+                            {% empty %}
+                                <p>No products available.</p>
+                            {% endfor %}
+                        </div>
+                    </section>
+
+                    <!-- End of menu section -->
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+
+        <div class="links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'devpage' %}">Developers</a>
+            <a href="{% url 'recipe' %}">Recipes</a>
+            <a href="{% url 'contact' %}">Contact</a>
+          </div>
+
+        <div class="credit">
+            Created by <span>Cafe Aroma</span> | All Rights Reserved
+        </div>
+    </div>
+    <!-- End of footer -->
+
+    <script>
+        document.querySelectorAll('.recipe-card').forEach((card) => {
+            let counterValue = 1;
+            const counterDisplay = card.querySelector('#display-counter');
+            const counterInput = card.querySelector('#counter-value');
+            const increaseBtn = card.querySelector('#increase-btn');
+            const decreaseBtn = card.querySelector('#decrease-btn');
+
+            increaseBtn.addEventListener('click', () => {
+                if (counterValue < 15) {
+                counterValue++;
+                counterDisplay.textContent = counterValue;
+                counterInput.value = counterValue; // Update hidden input value
+                }
+                if(counterValue == 15){
+                    alert("You can't order more than 15 items");
+                }
+            });
+
+            decreaseBtn.addEventListener('click', () => {
+                if (counterValue > 1) {
+                    counterValue--;
+                    counterDisplay.textContent = counterValue;
+                    counterInput.value = counterValue; // Update hidden input value
+                }
+            });
+        });
+    </script>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+  
+</body>
+</html>
