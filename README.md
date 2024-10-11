@@ -1,4 +1,4 @@
-#Café Aroma
+# Café Aroma
 
 Welcome to Café Aroma, a cozy online platform designed to bring the warmth of your favorite café directly to your home. Our website offers a delightful selection of coffee products, user-friendly features for a seamless ordering experience, and a commitment to quality.
 
